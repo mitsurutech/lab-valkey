@@ -1,0 +1,6 @@
+# Publishes the lab on your own machine only (127.0.0.1), for running it outside the platform:
+#   docker compose -f compose.yaml -f local.yaml up
+# Then, with any Redis or Valkey client: valkey-cli -p 6379, or redis-cli -p 6379.
+services:
+  valkey:
+    ports: ["127.0.0.1:6379:6379"]

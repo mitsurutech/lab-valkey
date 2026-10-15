@@ -1,0 +1,41 @@
+# Valkey: a key-value store, Redis-compatible. Keys and values, an expiry on a key, lists,
+# hashes and a counter, in a store of your own that nobody else can reach.
+#
+# Your copy is one service, valkey, and it has no way out to the internet. The lab's terminal
+# has no valkey-cli, so the lesson sends each command to port 6379 with nc, a plain text
+# protocol you can read for yourself: v SET greeting hello prints +OK. Or run nc valkey 6379
+# and type commands straight at the server, one per line.
+#
+# Try SET and GET, SET with EX to make a key expire, RPUSH and LRANGE for a list, HSET and
+# HGETALL for a hash, and INCR for a counter. The store keeps an append-only file in a named
+# volume, so what you write is still there after you stop the lab and start it again.
+#
+# Hand in the replies to a short session: a key with an expiry and TTL counting down, a
+# list, a hash and a counter, with a sentence on what the expiry did and what came back
+# after you stopped and started the lab.
+
+services:
+  valkey:
+    image: valkey/valkey:8.1.10-alpine
+    user: "999"
+    # Nothing outside this copy can reach it, so there is no password. The append-only file
+    # is the persistence: every write is logged to the named volume, and 32 MB is the most
+    # it will hold, after which a write is refused rather than the service being killed.
+    command: ["valkey-server", "--appendonly", "yes", "--protected-mode", "no", "--maxmemory", "32mb"]
+    volumes:
+      - valkeydata:/data
+    expose: ["6379"]
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    labels:
+      lab.title: Valkey
+
+volumes:
+  valkeydata:
