@@ -1,5 +1,7 @@
 # Valkey lab with Docker Compose: learn a Redis-compatible key-value store, expiry, lists, hashes and counters
 
+[English](README.md) | [Français](README.fr.md) | [日本語](README.ja.md) | [Español](README.es.md)
+
 [![check](https://github.com/mitsurutech/lab-valkey/actions/workflows/check.yml/badge.svg)](https://github.com/mitsurutech/lab-valkey/actions/workflows/check.yml)
 
 A ready-made **Valkey lab** for classrooms, from the [MitsuruTech Learning Platform](https://mitsurutech.co.uk/learning), where schools and colleges give every student their own databases, containers and terminal in the browser. Each student gets their own **Valkey, the open source key-value store that speaks the same commands as Redis**, to learn **SET and GET, keys that expire, lists, hashes and counters**, and to see what a store that keeps data in memory does when it is stopped and started. Nothing is installed on the student's machine and nothing they type can affect anybody else.
@@ -106,7 +108,11 @@ test/check.sh
 
 [Valkey](https://valkey.io) is BSD-3-Clause licensed. The image is `valkey/valkey:8.1.10-alpine`, run unmodified and not distributed by us.
 
-The compose file, the tests and this documentation are MIT licensed, see [LICENSE](LICENSE): copy it, change it, teach with it. The application inside is the licence of its own project, linked above.
+The application inside is the licence of its own project, linked above.
+
+## Licence
+
+This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). You may share it and adapt it for learning and teaching, if you credit Mitsuru Technologies Ltd, do not use it commercially, and share anything you make from it under the same licence. The full text is in the `LICENSE` file.
 
 ## About
 
